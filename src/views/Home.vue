@@ -1,18 +1,34 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/tindev.svg">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <input type="text" name="username" id="username" v-model="username">
+    <button @click="searchUsername()">Search</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import axios from 'axios'
 export default {
   name: 'home',
-  components: {
-    HelloWorld
+  data: function () {
+    return {
+      username: ''
+    }
+  },
+  methods: {
+    searchUsername: async function () {
+      const response = await axios.get(`https://api.github.com/users/${this.username}`)
+      console.log(response.data)
+    }
   }
 }
 </script>
+
+<style lang="scss">
+  .home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+  }
+</style>
