@@ -30,5 +30,18 @@ export default {
     align-items: center;
     justify-content: center;
     flex-flow: column;
+    @media (max-width: 640px) {
+      width: 80%;
+    }
+    @media (min-width: 641px) and (max-width: 1023px) {
+      width: 50%;
+    }
+    @media (min-width: 1024px) {
+      width: 30%;
+    }
+
+    input, button {
+      width: 100%;
+    }
   }
 </style>
